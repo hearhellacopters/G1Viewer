@@ -1,0 +1,79 @@
+name: Bug report
+description: Something does not open, looks wrong, or breaks.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. The more of this you can fill in, the faster it can be found and fixed.
+  - type: input
+    id: version
+    attributes:
+      label: Viewer version
+      description: Shown beside the title, at the top left of the viewer (for example v0.5.0).
+      placeholder: v0.5.0
+    validations:
+      required: true
+  - type: input
+    id: game
+    attributes:
+      label: Game
+      description: The game's name, and its region if you know it.
+      placeholder: Nioh 3 (demo), EU
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - PC
+        - PlayStation 5
+        - PlayStation 4
+        - PlayStation 3
+        - PlayStation Vita
+        - PSP
+        - Nintendo Switch
+        - Wii U
+        - Wii
+        - Nintendo 3DS
+        - Xbox Series / Xbox One
+        - Xbox 360
+        - Android / iOS
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: opened
+    attributes:
+      label: What you opened
+      description: The files or the archive, and how (dropped, Open files, Open folder, Archives). File names help.
+      placeholder: root.rdb from the game folder, then the model 0x354871a0.g1m
+    validations:
+      required: true
+  - type: textarea
+    id: happened
+    attributes:
+      label: What happened, and what you expected
+      description: A screenshot is worth a lot here; one from the game, for comparison, even more.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to see it
+      placeholder: |
+        1. Open ...
+        2. Click ...
+        3. See ...
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      placeholder: Chrome 141 on Windows 11
+  - type: textarea
+    id: files
+    attributes:
+      label: Files or screenshots
+      description: Drag files here (zip them; up to 25 MB), or link to a download. Only the files needed, please.

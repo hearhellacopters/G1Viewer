@@ -1,0 +1,83 @@
+name: Sample files
+description: A game, format or file the viewer does not handle yet, or handles wrongly.
+title: "[Samples] "
+labels: ["samples"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Samples are how new games and formats get supported. Please send **only the files needed** - a few models, textures or motions rather than a whole game - from a copy of the game you own.
+  - type: input
+    id: game
+    attributes:
+      label: Game
+      description: The game's name, and its region if you know it.
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - PC
+        - PlayStation 5
+        - PlayStation 4
+        - PlayStation 3
+        - PlayStation Vita
+        - PSP
+        - Nintendo Switch
+        - Wii U
+        - Wii
+        - Nintendo 3DS
+        - Xbox Series / Xbox One
+        - Xbox 360
+        - Android / iOS
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What the files are
+      multiple: true
+      options:
+        - Models
+        - Textures
+        - Motions / animations
+        - Effects
+        - Stages / maps
+        - Sound
+        - Archives (the game's packed data)
+        - Not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: state
+    attributes:
+      label: How the viewer does with them now
+      options:
+        - They do not open
+        - They open but look or play wrong
+        - A game or format the viewer does not list yet
+        - Not tried
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: The files
+      description: Drag them here zipped (GitHub takes up to 25 MB), or link to a download for a larger set. Say where in the game's folders they came from if you can.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: What you were hoping to see, screenshots from the game, what you already tried.
+  - type: checkboxes
+    id: owned
+    attributes:
+      label: Sharing
+      options:
+        - label: These are only the files needed, from a copy of the game I own.
+          required: true

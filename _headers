@@ -1,0 +1,4 @@
+/vendor/tex_codec/*.mjs
+  Content-Type: text/javascript; charset=utf-8
+/vendor/tex_codec/*.wasm
+  Content-Type: application/wasm
