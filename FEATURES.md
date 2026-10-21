@@ -26,7 +26,7 @@ browser: files you open are read on this page and never uploaded.
 - Physically based materials for the newest games (Nioh 3, Wo Long, Rise of
   the Ronin), read the way each game's own shaders read their textures.
 - Glowing materials (claws, crests, embers) with the game's own pulse.
-- Nioh 3's eyes, the iris refracted through the cornea.
+- Eyes with iris refracted through the cornea.
 - Wireframe, vertex colours, the skeleton and the texture slots on view.
 
 ## Textures
