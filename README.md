@@ -36,7 +36,7 @@ runs in the page: what you open is read in your browser and never uploaded anywh
 The full breakdown - every extension, sound codec, and which games' archives
 open - is in **[FORMATS.md](FORMATS.md)**.
 
-See full list of [all features here](FEATURES.md).
+See full list of all features in **[FEATURES.md](FEATURES.md).**
 
 [Report a problem or send samples](https://github.com/hearhellacopters/G1Viewer/issues/new/choose).
 
