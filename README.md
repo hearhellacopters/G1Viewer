@@ -2,7 +2,7 @@
 
 ### ▶ Open the viewer: **[https://hearhellacopters.github.io/G1Viewer/](https://hearhellacopters.github.io/G1Viewer/)**
 
-Version 0.5.0 · [What's in it](FEATURES.md) · [What changed](CHANGELOG.md) · [Report a problem or send samples](https://github.com/hearhellacopters/G1Viewer/issues/new/choose)
+Version 0.6.0 · [What's in it](FEATURES.md) · [What changed](CHANGELOG.md) · [Report a problem or send samples](https://github.com/hearhellacopters/G1Viewer/issues/new/choose)
 
 A viewer for the model, texture, motion, physics and effect files of Koei
 Tecmo's games, in your browser. Open single files, a folder, or a game's

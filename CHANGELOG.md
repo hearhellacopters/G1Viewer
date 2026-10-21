@@ -2,12 +2,15 @@
 
 What changed in each version of the G1 Viewer, newest first.
 
-## Unreleased
+## 0.6.0 (2026-10-20)
 
 ### Models and materials
 - Nioh 3's eyes draw their irises, refracted through the cornea as the game lays them on
 - Nioh 3's glowing materials (the boss's claws, crest and wing edges) glow and pulse as in the game, with a glow slider under View > materials
-- Nioh 3, Wo Long and Rise of the Ronin models draw with physically based materials, their roughness, reflectance and occlusion read from their specular maps the way each game's shader reads them (View > materials); a 1x1 stand-in specular map keeps the classic look instead of a washed-out grey
+- Nioh 3, Wo Long and Rise of the Ronin models draw with physically based materials, their roughness, reflectance and occlusion read from their specular maps the way each game's shader reads them (View > materials), on placed stage pieces too
+- Nioh 3's tiled detail layers draw: fine surface normals, and on some materials a second colour, roughness and occlusion, picked per texel by the material's mask
+- Nioh 3's hair is lit as strands, with the shifted highlight and its coloured second one running along the hair
+- Rim light where a material sets one (Nioh 3's spirit creatures)
 - Materials whose game shader cuts out alpha now draw as cutouts
 - Samurai Warriors 3's and Samurai Warriors: Katana's Wii models draw textured, paletted and TPL textures included
 - Dynasty Warriors: Gundam's models, the oldest G1M version, open
@@ -36,6 +39,8 @@ What changed in each version of the G1 Viewer, newest first.
 - A stage's effects draw together, and only those in view
 
 ### Shaders and lighting
+- On a stage, the physically based materials reflect the stage's own sky and ground instead of the studio, and take their ambient from it
+- A stage camera's bloom and tone curve are drawn (View > lighting > stage post effects), with an exposure control
 - The PC games' own shader programs run in the browser: Wo Long and Dissidia NT (DirectX 11) and Rise of the Ronin (DirectX 12), skinned, lit by the viewer's lights, each mesh with its own library
 - Stage pieces can be drawn with the game's own shaders (View > stage drawing, off by default); Wo Long's bamboo, rocks and sky dome draw right with them
 - Stages are lit by their own environment: the sun or moon placed by the stage's date, time and place, with the sky's ambient light beside it
@@ -46,6 +51,8 @@ What changed in each version of the G1 Viewer, newest first.
 - A built stage says how it is drawn and what of its own look the opened files could not supply
 
 ### Archives and games
+- Opening an archive that is still opening, or already open, no longer opens a second copy
+- The Nioh 3 demo's archive folder opens (archive_NN.bin), compressed entries included; with it open, the character creator, the title screen and the Edo stage take the environments the game puts in place of theirs
 - Older games' stages build with their ground, objects and water: Samurai Warriors 3, Dynasty Warriors 7, Warriors Orochi 3, Dynasty Warriors 8, Trinity, Ken's Rage, One Piece: Pirate Warriors, Bladestorm, Samurai Warriors: Katana and the 3DS games
 - Those stages switch levels of detail where the game does, and Dynasty Warriors 7, Warriors Orochi 3, Samurai Warriors 3 and the 3DS stages bring their collision
 - New games open: Bladestorm (Xbox 360), Samurai Warriors: Katana (Wii), Hyrule Warriors Legends, Yo-kai Sangokushi and Samurai Warriors Chronicles (3DS), Dynasty Warriors (PSP), and the Nioh 3 demo
