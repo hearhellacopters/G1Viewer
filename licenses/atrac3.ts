@@ -443,6 +443,65 @@ export function decodeAtrac3(data: Uint8Array, cfg: Atrac3Config): Float32Array[
   return out;
 }
 
+// ------------------------------------------------------------------- RIFF --
+/**
+ * A RIFF of ATRAC3 (WAVE_FORMAT 0x0270, the PSP's - Toukiden Kiwami's music;
+ * vgmstream's riff.c, FFmpeg's atrac3.c): fmt's block align the frame's bytes,
+ * its 14 extra bytes a constant 1, the samples a channel, then the coding mode
+ * (non-zero: joint stereo, else each channel its share of the frame); `fact`
+ * the samples and the encoder's skip (its last word, 0x0C long; its second, 8
+ * long; else 1024), the decoder's own 69 x 2 on top, as MSF's; `smpl` a loop,
+ * its points counting both.
+ */
+export interface At3Riff {
+  channels: number;
+  sampleRate: number;
+  blockAlign: number;
+  jointStereo: boolean;
+  samples: number;
+  /** the samples cut from the start: the fact's skip and the decoder's delay */
+  skip: number;
+  data: number;
+  dataSize: number;
+  /** -1: does not loop */
+  loopStart: number;
+  loopEnd: number;
+}
+
+export function readAt3Riff(b: Uint8Array): At3Riff {
+  const dv = new DataView(b.buffer, b.byteOffset, b.byteLength);
+  const r: At3Riff = { channels: 0, sampleRate: 0, blockAlign: 0, jointStereo: false, samples: 0, skip: 1024 + 69 * 2, data: 0, dataSize: 0, loopStart: -1, loopEnd: -1 };
+  let factSkip = 1024, tag = -1;
+  for (let o = 12; o + 8 <= b.length;) {
+    const id = String.fromCharCode(b[o], b[o + 1], b[o + 2], b[o + 3]), n = dv.getUint32(o + 4, true), c = o + 8;
+    if (id === 'fmt ') {
+      tag = dv.getUint16(c, true); r.channels = dv.getUint16(c + 2, true); r.sampleRate = dv.getUint32(c + 4, true); r.blockAlign = dv.getUint16(c + 0x0c, true);
+      if (n >= 0x20) r.jointStereo = dv.getUint16(c + 0x12 + 6, true) !== 0;
+    } else if (id === 'fact') {
+      if (n >= 4) r.samples = dv.getInt32(c, true);
+      if (n === 0x0c) factSkip = dv.getInt32(c + 8, true); else if (n === 8) factSkip = dv.getInt32(c + 4, true);
+    } else if (id === 'smpl' && n >= 0x3c && dv.getUint32(c + 0x1c, true) > 0) {
+      r.loopStart = dv.getInt32(c + 0x24 + 0x08, true); r.loopEnd = dv.getInt32(c + 0x24 + 0x0c, true) + 1;
+    } else if (id === 'data') { r.data = c; r.dataSize = Math.min(n, b.length - c); break; }
+    o += 8 + n + (n & 1);
+  }
+  if (tag !== 0x0270) throw new Error('not an ATRAC3 RIFF (format 0x' + tag.toString(16) + ')');
+  if (!r.blockAlign || !r.channels) throw new Error('ATRAC3 RIFF: ' + r.channels + ' channels, ' + r.blockAlign + ' byte frames');
+  r.skip = factSkip + 69 * 2;
+  // the loop's points count the whole cut, the decoder's 69 x 2 too: less the fact's skip alone,
+  // Toukiden Kiwami's 60 looping tracks ended 69 samples past their last (ATRAC3plus's count the skip)
+  if (r.loopStart >= 0) { r.loopStart -= r.skip; r.loopEnd -= r.skip; }
+  const total = Math.floor(r.dataSize / r.blockAlign) * SAMPLES;
+  if (!r.samples || r.samples > total - r.skip) r.samples = Math.max(0, total - r.skip);
+  return r;
+}
+
+/** a RIFF of ATRAC3 decoded: its skip cut, its samples kept */
+export function decodeAt3Riff(b: Uint8Array, r = readAt3Riff(b)): Float32Array[] {
+  const pcm = decodeAtrac3(b.subarray(r.data, r.data + r.dataSize), { channels: r.channels, blockAlign: r.blockAlign, jointStereo: r.jointStereo && r.channels > 1 });
+  return pcm.map((ch) => ch.slice(r.skip, r.skip + r.samples));
+}
+
 // -------------------------------------------------------------------- MSF --
 /** Sony's MSF (vgmstream's msf.c): "MSF" + a version, codec, channels, data size, rate, flags, loop; data from 0x40 */
 export interface MsfInfo {

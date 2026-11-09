@@ -11,8 +11,8 @@ body:
     id: version
     attributes:
       label: Viewer version
-      description: Shown beside the title, at the top left of the viewer (for example v0.5.0).
-      placeholder: v0.5.0
+      description: Shown beside the title, at the top left of the viewer (for example v1.0.0).
+      placeholder: v1.0.0
     validations:
       required: true
   - type: input
@@ -34,6 +34,7 @@ body:
         - PlayStation 3
         - PlayStation Vita
         - PSP
+        - Nintendo Switch 2
         - Nintendo Switch
         - Wii U
         - Wii
@@ -48,7 +49,7 @@ body:
     id: opened
     attributes:
       label: What you opened
-      description: The files or the archive, and how (dropped, Open files, Open folder, Archives). File names help.
+      description: The files or the archive, and how (dropped on the page, File > Open game folder, File > Open files, the Archives panel). File names help.
       placeholder: root.rdb from the game folder, then the model 0x354871a0.g1m
     validations:
       required: true
