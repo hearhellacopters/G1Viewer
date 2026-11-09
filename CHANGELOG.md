@@ -2,6 +2,11 @@
 
 What changed in each version of the G1 Viewer, newest first.
 
+## 1.1.0 (2026-11-09)
+
+- **The Textures tab opens on a 2D view of the texture over the viewport**, and the 3D view pauses underneath. Drag to pan, scroll to zoom about the pointer, and double click to fit; 1:1 shows one texel per pixel. Magnified texels stay square, with a faint texel grid from 16x. A readout under the pointer gives the texel, the UV there and the decoded RGBA. Buttons show RGBA over a checkerboard, RGB with alpha ignored, or R, G, B or A alone, and tile the image 3 x 3 for UVs that run outside the 0..1 square. UV shells stay thin lines at any zoom, with each loaded mesh that samples the texture in its own colour, listed so each can be hidden or hovered to pick it out. "3D view" goes back to the model and the in-panel preview until the tab is opened again.
+- **The axes stay hidden until View > axes is ticked**, as the menu says. An empty page drew them from the start while their box read unticked; they hid only once a file loaded.
+
 ## 1.0.1 (2026-11-08)
 
 - **R5G6B5 textures (format 0x34, and the 3DS's tiled 0x3B) draw with red and blue the right way round.** The engine's format table gives 0x34 as GL's 5-6-5 layout, red in the top five bits, but the viewer read blue there: Dissidia Final Fantasy Opera Omnia's message images came out brown where they are blue, and Yo-kai Sangokushi's cut-ins blue where they are red.

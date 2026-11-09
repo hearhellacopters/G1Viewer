@@ -16,7 +16,7 @@ runs in the page: what you open is read in your browser and never uploaded anywh
 
 ### ▶ Open the viewer: **[https://hearhellacopters.github.io/G1Viewer/](https://hearhellacopters.github.io/G1Viewer/)**
 
-[v1.0.1 change log](CHANGELOG.md)
+[v1.1.0 change log](CHANGELOG.md)
 
 ## Supported files
 

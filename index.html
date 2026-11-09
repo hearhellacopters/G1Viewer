@@ -275,6 +275,31 @@
     .thumb { background: var(--panel2); border: 1px solid var(--border); border-radius: 4px; padding: 4px; cursor: pointer; text-align: center; font-size: 10px; color: var(--muted); }
     .thumb.selected { border-color: var(--accent); }
     .thumb canvas { width: 100%; height: 80px; object-fit: contain; image-rendering: pixelated; background: repeating-conic-gradient(#333 0 25%, #444 0 50%) 0 0 / 12px 12px; display: block; margin-bottom: 3px; }
+    #texview { position: absolute; inset: 0; z-index: 5; background: #16181c; overflow: hidden; }
+    #texview[hidden] { display: none; }
+    #texview .tv-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
+    #texview.dragging .tv-canvas { cursor: grabbing; }
+    #texview .tv-bar { position: absolute; left: 10px; right: 10px; top: 10px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+      background: rgba(20, 22, 26, .82); padding: 6px 8px; border-radius: 6px; backdrop-filter: blur(4px); }
+    #texview .tv-bar .spacer { flex: 1; }
+    #texview .tv-bar button.on { border-color: var(--accent); color: var(--accent); }
+    #texview .tv-seg { display: inline-flex; }
+    #texview .tv-seg button { border-radius: 0; margin-left: -1px; min-width: 30px; padding: 4px 6px; }
+    #texview .tv-seg button:first-child { border-radius: 4px 0 0 4px; margin-left: 0; }
+    #texview .tv-seg button:last-child { border-radius: 0 4px 4px 0; }
+    #texview .tv-seg button.on { position: relative; z-index: 1; }
+    #texview .tv-zoom { min-width: 44px; text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+    #texview .tv-meshes { position: absolute; right: 10px; top: 58px; max-height: calc(100% - 110px); max-width: min(300px, 45%); overflow: auto;
+      background: rgba(20, 22, 26, .82); padding: 6px 8px; border-radius: 6px; font-size: 11px; display: flex; flex-direction: column; gap: 2px; }
+    #texview .tv-meshes[hidden] { display: none; }
+    #texview .tv-head { color: var(--muted); margin-bottom: 3px; }
+    #texview .tv-mesh { display: flex; gap: 5px; min-width: 0; }
+    #texview .tv-mesh:hover { color: var(--fg); }
+    #texview .tv-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    #texview .tv-swatch { flex: none; display: inline-block; width: 10px; height: 10px; border-radius: 2px; border: 1px solid rgba(255,255,255,.3); margin-right: 4px; vertical-align: -1px; }
+    #texview .tv-status { position: absolute; left: 10px; bottom: 10px; max-width: calc(100% - 20px); display: flex; flex-wrap: wrap; gap: 14px;
+      background: rgba(20, 22, 26, .82); padding: 3px 8px; border-radius: 4px; font: 11px/1.5 ui-monospace, Consolas, monospace; color: #b9c0ca; white-space: pre; pointer-events: none; }
+    #texview .tv-label { color: var(--fg); }
     .preview canvas { max-width: 100%; background: repeating-conic-gradient(#333 0 25%, #444 0 50%) 0 0 / 16px 16px; image-rendering: pixelated; }
     .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 6px 0; }
     .pair-box { margin: 8px 0; }
@@ -338,7 +363,7 @@
     }
     @media (prefers-reduced-motion: reduce) { #left, #right { transition: none; } }
   </style>
-  <script type="module" crossorigin src="./assets/index-D7nvtT4H.js"></script>
+  <script type="module" crossorigin src="./assets/index-D7yj2NEn.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/three-D1MBH40g.js">
   <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-hePW80VL.js">
   <link rel="modulepreload" crossorigin href="./assets/fflate-Xgao_b44.js">
