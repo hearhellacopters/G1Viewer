@@ -2,6 +2,10 @@
 
 What changed in each version of the G1 Viewer, newest first.
 
+## 1.0.1 (2026-11-08)
+
+- **R5G6B5 textures (format 0x34, and the 3DS's tiled 0x3B) draw with red and blue the right way round.** The engine's format table gives 0x34 as GL's 5-6-5 layout, red in the top five bits, but the viewer read blue there: Dissidia Final Fantasy Opera Omnia's message images came out brown where they are blue, and Yo-kai Sangokushi's cut-ins blue where they are red.
+
 ## 1.0.0 (2026-11-07)
 
 The first public release since 0.6.0. Versions 0.7, 0.8 and 0.9 were built but not published, so their changes, below, are new on the public page too.
