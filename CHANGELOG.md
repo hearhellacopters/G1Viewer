@@ -2,6 +2,11 @@
 
 What changed in each version of the G1 Viewer, newest first.
 
+## 1.2.0 (2026-11-10)
+
+- **Shared file names.** As an archive opens, the viewer looks for a list of names for it in the new [G1Names](https://github.com/hearhellacopters/G1Names) repository: plain CSV lists, one per game, gathered from the community's tools and the games' own data. A list whose names were checked (each hashes back to its file's id, or came from the game itself) is applied to the entries the archive leaves unnamed. An unchecked one is offered in italics and applied only when clicked. Each shows as a button under the archive's tools that switches it on or off, remembered per archive; a name you give an entry still comes first. To start: Dead or Alive 6 and Last Round, Fairy Tail, One Piece: Pirate Warriors 4, Romance of the Three Kingdoms XIV and the engine's shared files by KTID, and Bladestorm (Xbox 360) by entry; unchecked, Nioh 3, Fire Emblem: Three Houses, Attack on Titan 1 and 2, Bladestorm: Nightmare, Dynasty Warriors 4 Hyper, 6 and 6 Empires, Samurai Warriors 2 and Warriors Orochi. Send more with the save **names** button and G1Names' names form.
+- **An RDB opened without a name database no longer reads "17 named from"** in its header: the count of names it found stands alone.
+
 ## 1.1.0 (2026-11-09)
 
 - **The Textures tab opens on a 2D view of the texture over the viewport**, and the 3D view pauses underneath. Drag to pan, scroll to zoom about the pointer, and double click to fit; 1:1 shows one texel per pixel. Magnified texels stay square, with a faint texel grid from 16x. A readout under the pointer gives the texel, the UV there and the decoded RGBA. Buttons show RGBA over a checkerboard, RGB with alpha ignored, or R, G, B or A alone, and tile the image 3 x 3 for UVs that run outside the 0..1 square. UV shells stay thin lines at any zoom, with each loaded mesh that samples the texture in its own colour, listed so each can be hidden or hovered to pick it out. "3D view" goes back to the model and the in-panel preview until the tab is opened again.

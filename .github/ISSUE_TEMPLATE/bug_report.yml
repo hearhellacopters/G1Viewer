@@ -11,8 +11,8 @@ body:
     id: version
     attributes:
       label: Viewer version
-      description: Shown beside the title, at the top left of the viewer (for example v1.1.0).
-      placeholder: v1.1.0
+      description: Shown beside the title, at the top left of the viewer (for example v1.2.0).
+      placeholder: v1.2.0
     validations:
       required: true
   - type: input

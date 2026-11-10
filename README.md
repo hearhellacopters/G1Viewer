@@ -16,7 +16,7 @@ runs in the page: what you open is read in your browser and never uploaded anywh
 
 ### ▶ Open the viewer: **[https://hearhellacopters.github.io/G1Viewer/](https://hearhellacopters.github.io/G1Viewer/)**
 
-[v1.1.0 change log](CHANGELOG.md)
+[v1.2.0 change log](CHANGELOG.md)
 
 ## Supported files
 
@@ -52,6 +52,28 @@ it opens; the version number beside it opens the changelog.
 To run it yourself, serve this repository's files with any static web host -
 it needs no server code and no configuration, and works at a domain's root or
 in a subfolder. GitHub Pages serves it as it is.
+
+## File names
+
+Most of these games ship their files without names. When you open an archive,
+the viewer looks for a list of names for it in
+**[G1Names](https://github.com/hearhellacopters/G1Names)**, a companion
+repository of plain CSV lists, one per game:
+
+- A list whose names were **checked** - each hashes back to its file's id, or
+  was read from the game's own data - is applied to the entries the archive
+  leaves unnamed. It shows as a lit button under the archive's tools.
+- An **unchecked** list (names someone matched to entries, which can't be
+  checked by hashing) is offered as a button in italics, and applied only when
+  you click it.
+
+Click a button to switch a list off or on for that archive; the viewer
+remembers it. A name you give an entry yourself always comes first.
+
+**Found names?** Press the save **names** button under the archive to download
+its `key,name` CSV, and send it to G1Names with its
+[names form](https://github.com/hearhellacopters/G1Names/issues/new?template=names.yml).
+A list from G1Names can also be loaded by hand with the load **names** button.
 
 ## Why this repository is a build, not a source
 

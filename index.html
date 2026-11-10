@@ -229,6 +229,12 @@
     .archive-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 2px 0 3px; }
     .archive-tools button { font-size: 11px; padding: 1px 6px; flex: none; white-space: nowrap; }
     .archive-notes { font-size: 11px; color: var(--accent2); padding: 0 0 3px; }
+    .archive-shared { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 0 0 3px; font-size: 11px; }
+    .archive-shared a { color: inherit; opacity: 0.75; }
+    .archive-shared button { font-size: 11px; padding: 1px 6px; flex: none; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+    .archive-shared button.on { border-color: var(--accent); color: var(--accent); }
+    .archive-shared button.unchecked, .tree .node .name.unchecked { font-style: italic; }
+    .tree .node .name.shared { opacity: 0.85; }
     .archive-notes summary { cursor: pointer; width: fit-content; user-select: none; }
     .archive-notes-list { max-height: 120px; overflow-y: auto; padding: 2px 0 0 12px; }
     .archive-notes-list > div { padding: 1px 0; }
@@ -363,7 +369,7 @@
     }
     @media (prefers-reduced-motion: reduce) { #left, #right { transition: none; } }
   </style>
-  <script type="module" crossorigin src="./assets/index-D7yj2NEn.js"></script>
+  <script type="module" crossorigin src="./assets/index-CxFDqLWb.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/three-D1MBH40g.js">
   <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-hePW80VL.js">
   <link rel="modulepreload" crossorigin href="./assets/fflate-Xgao_b44.js">
